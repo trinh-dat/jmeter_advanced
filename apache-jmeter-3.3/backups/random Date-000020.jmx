@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1506846299000</longProp>
+        <longProp name="ThreadGroup.end_time">1506846299000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey"></stringProp>
+          <stringProp name="script">def date = new Date()
+
+log.info date.toString()
+log.info date.getTime().toString()
+log.info date.format(&quot;dd/MM/yyyy&quot;)
+
+def next24hours = date.getTime() + 24  60  60 * 1000
+def tomorrow = new Date()
+tomorrow.setTime(next24hours)
+log.info &quot;Tomorrow: &quot; + tomorrow.format(&quot;dd/MM/yyyy HH:mm:ss&quot;)
+
+String dateString = &quot;Mon, Oct 02, 2017 - 10:05:30&quot;
+def whatDate = Date.parse(&quot;E, MMM dd, yyyy - HH:mm:ss&quot;, dateString)
+log.info whatDate.getTime().toString()
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler -TimeCategory" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey"></stringProp>
+          <stringProp name="script">import groovy.time.TimeCategory
+
+use(TimeCategory) {
+
+	// current time
+	// n.[UNIT].from.now
+	// n.[UNIT].ago
+	log.info &quot;2 days from now &quot; + 2.days.from.now
+	log.info &quot;1 week ago &quot; + 1.week.ago
+	log.info &quot;45 seconds from now &quot; + 45.seconds.from.now.format(&quot;HH/mm/ss&quot;)
+	log.info &quot;5 days ago &quot; + 5.days.ago
+	// specific point time
+	def date = new Date()
+	log.info &quot;2 days from now &quot; + (date + 2.days)
+	log.info &quot;3 weeks ago &quot; + (date - 3.weeks +  1.day)
+}
+
+def nextFiveDays = use(TimeCategory) {
+	return 5.days.from.now
+}
+
+log.info nextFiveDays.format(&quot;MM dd, yyyy&quot;)
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

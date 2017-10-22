@@ -1,0 +1,2960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1507179942000</longProp>
+        <longProp name="ThreadGroup.end_time">1507179942000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="STAGING_URL" elementType="Argument">
+              <stringProp name="Argument.name">STAGING_URL</stringProp>
+              <stringProp name="Argument.value">lcs688qakh.execute-api.us-west-2.amazonaws.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="INSPECTION_TYPE" elementType="Argument">
+              <stringProp name="Argument.name">INSPECTION_TYPE</stringProp>
+              <stringProp name="Argument.value">dupro</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="WORKFLOW_NAME" elementType="Argument">
+              <stringProp name="Argument.name">WORKFLOW_NAME</stringProp>
+              <stringProp name="Argument.value">HA_Target_DUPRO_Pilot_v1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="ORG_ID" elementType="Argument">
+              <stringProp name="Argument.name">ORG_ID</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="USERNAME" elementType="Argument">
+              <stringProp name="Argument.name">USERNAME</stringProp>
+              <stringProp name="Argument.value">regression1@mailinator.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="PASSWORD" elementType="Argument">
+              <stringProp name="Argument.name">PASSWORD</stringProp>
+              <stringProp name="Argument.value">478bc5c334a763a10a4414fe52b06f683680186d5c4a87ab013a48f7ecf8866b4c330e2a6f51be58afb87d54cf399468c09b30621a05a451b844420de8751a7c</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Auth</stringProp>
+              <stringProp name="Header.value">${TOKEN}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">/Users/dattrinh/Desktop/Target Integration/target_workflows.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">INSPECTION_TYPE, WORKFLOW_NAME</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;email&quot; : &quot;${USERNAME}&quot;,&#xd;
+	&quot;password&quot; : &quot;${PASSWORD}&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/sms/login</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="extract token" enabled="true">
+              <stringProp name="VAR">TOKEN</stringProp>
+              <stringProp name="JSONPATH">$.data.session_token</stringProp>
+              <stringProp name="DEFAULT">NOT_FOUND</stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="extract org id" enabled="true">
+              <stringProp name="VAR">ORG_ID</stringProp>
+              <stringProp name="JSONPATH">$.data.orgs..id</stringProp>
+              <stringProp name="DEFAULT">NOT_FOUND</stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="create new workflow" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;inspectionType&quot;: &quot;${INSPECTION_TYPE}&quot;,&#xd;
+	&quot;productLines&quot;: [&quot;25142&quot;, &quot;25143&quot;, &quot;25145&quot;, &quot;25149&quot;, &quot;25150&quot;, &quot;25151&quot;, &quot;25152&quot;, &quot;25153&quot;, &quot;25154&quot;],&#xd;
+	&quot;productCategories&quot;: [&quot;25142&quot;, &quot;25143&quot;, &quot;25145&quot;, &quot;25149&quot;, &quot;25150&quot;, &quot;25151&quot;, &quot;25152&quot;, &quot;25153&quot;, &quot;25154&quot;],&#xd;
+	&quot;workflowName&quot;: &quot;${WORKFLOW_NAME}&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/inspectorio/ams/v1/1254/workflows</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="extract Workflow ID" enabled="true">
+            <stringProp name="VAR">WORKFLOW_ID</stringProp>
+            <stringProp name="JSONPATH">$.data</stringProp>
+            <stringProp name="DEFAULT">NOT_FOUND</stringProp>
+            <stringProp name="VARIABLE"></stringProp>
+            <stringProp name="SUBJECT">BODY</stringProp>
+          </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="import workflow" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;productCategories&quot;: [&#xd;
+    &quot;25142&quot;,&#xd;
+    &quot;25143&quot;,&#xd;
+    &quot;25145&quot;,&#xd;
+    &quot;25149&quot;,&#xd;
+    &quot;25150&quot;,&#xd;
+    &quot;25151&quot;,&#xd;
+    &quot;25152&quot;,&#xd;
+    &quot;25153&quot;,&#xd;
+    &quot;25154&quot;&#xd;
+  ],&#xd;
+  &quot;inspectionTypeFilter&quot;: &quot;1254_dupro&quot;,&#xd;
+  &quot;inspectionWorkflow&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;SJOFGdAqb&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Were you denied access to the factory?&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;ryDaMdCc-&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Is the factory prepared for this activity?&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Check-in&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Check-in&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;value&quot;: &quot;YES&quot;,&#xd;
+                          &quot;failResponse&quot;: false,&#xd;
+                          &quot;actions&quot;: [&#xd;
+                            {&#xd;
+                              &quot;action&quot;: &quot;add_question&quot;,&#xd;
+                              &quot;question&quot;: {&#xd;
+                                &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                                &quot;option&quot;: &quot;YES&quot;,&#xd;
+                                &quot;choice&quot;: &quot;YES&quot;,&#xd;
+                                &quot;dependTo&quot;: &quot;Syp8XOAcW&quot;,&#xd;
+                                &quot;options&quot;: [&#xd;
+                                  {&#xd;
+                                    &quot;value&quot;: &quot;YES&quot;,&#xd;
+                                    &quot;actions&quot;: []&#xd;
+                                  },&#xd;
+                                  {&#xd;
+                                    &quot;value&quot;: &quot;NO&quot;,&#xd;
+                                    &quot;actions&quot;: []&#xd;
+                                  },&#xd;
+                                  {&#xd;
+                                    &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                                    &quot;actions&quot;: []&#xd;
+                                  }&#xd;
+                                ],&#xd;
+                                &quot;id&quot;: &quot;H1etX_0q-&quot;,&#xd;
+                                &quot;dependOn&quot;: &quot;Syp8XOAcW&quot;&#xd;
+                              }&#xd;
+                            }&#xd;
+                          ],&#xd;
+                          &quot;id&quot;: &quot;chk__276&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;failResponse&quot;: false,&#xd;
+                          &quot;value&quot;: &quot;NO&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk__277&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;failResponse&quot;: false,&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk__278&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does factory provide a valid testing certificate for the product being inspected based on MST requirements?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;Syp8XOAcW&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does factory provide copies of Target Purchase Orders, CMS or Packing List for the product being inspected?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;HkLoQuAcZ&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does the factory provide an appropriate manufacturing control plan including process monitoring, quality controls, and internal testing for the product being inspected?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;Bktp7_A5-&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Which criteria meets based on your observations?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;rkly4uCq-&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does Factory provide detailed specifications for the product being inspected&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;Sy9eE_AqW&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Which criteria meets based on your observations?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;BJLMVOA5b&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does factory provide a complete production plan that confirms the factory can meet the program delivery dates?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;SJeVEdC9W&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does Factory provide all Floor Ready components including retail packaging and the sample has been approved?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;rksBEOA9b&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Is this product Children&apos;s Flame Retardant Sleepwear?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;HJvDVdAc-&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does the tracking labels meet applicable FPU and GPU requirements?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;HkRuEd05b&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Is the product subject to mold / mildew requirements?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;ry3cV_0cb&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Does CAP?S or any applicable action has been provided by the factory as a follow up from previous failed inspections or TPR meetings?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;SkY34uAcW&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                      &quot;label&quot;: &quot;Did Vendor / Factory provided Self Inspection Result?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;ByxCE_A5-&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Is PVP Documentation available on-site?&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;value&quot;: &quot;YES&quot;,&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;actions&quot;: [&#xd;
+                        {&#xd;
+                          &quot;action&quot;: &quot;add_question&quot;,&#xd;
+                          &quot;question&quot;: {&#xd;
+                            &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                            &quot;option&quot;: &quot;YES&quot;,&#xd;
+                            &quot;choice&quot;: &quot;YES&quot;,&#xd;
+                            &quot;dependTo&quot;: &quot;HJzZQ_Rc-&quot;,&#xd;
+                            &quot;options&quot;: [&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;YES&quot;,&#xd;
+                                &quot;actions&quot;: []&#xd;
+                              },&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;NO&quot;,&#xd;
+                                &quot;actions&quot;: []&#xd;
+                              },&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                                &quot;actions&quot;: []&#xd;
+                              }&#xd;
+                            ],&#xd;
+                            &quot;id&quot;: &quot;ByxCE_A5-&quot;,&#xd;
+                            &quot;dependOn&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                          }&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;id&quot;: &quot;chk__273&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;NO&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__274&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__275&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;isCustomType&quot;: false,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;id&quot;: &quot;HJzZQ_Rc-&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;isRoot&quot;: true,&#xd;
+                  &quot;id&quot;: &quot;HJoqM-16b&quot;,&#xd;
+                  &quot;label&quot;: &quot;Does Factory provide detailed specifications for the product being inspected? Must have one of these options: Target spec, Vendor spec, Detailed spec created specifically for the factory&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;YES&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__305&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;NO&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__306&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__307&quot;&#xd;
+                    }&#xd;
+                  ]&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Documentation&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HyASBOR5Z&quot;,&#xd;
+                      &quot;label&quot;: &quot;Are there Red/White Label sealed samples?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;BJK8rOAc-&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HyASBOR5Z&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;YES&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;NO&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;dependTo&quot;: &quot;HyASBOR5Z&quot;,&#xd;
+                      &quot;label&quot;: &quot;Are there Yellow Label sealed samples?&quot;,&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;BysOBuAcW&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;HyASBOR5Z&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Are there Approved Samples?&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;value&quot;: &quot;YES&quot;,&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;actions&quot;: [&#xd;
+                        {&#xd;
+                          &quot;action&quot;: &quot;add_question&quot;,&#xd;
+                          &quot;question&quot;: {&#xd;
+                            &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                            &quot;option&quot;: &quot;YES&quot;,&#xd;
+                            &quot;choice&quot;: &quot;YES&quot;,&#xd;
+                            &quot;dependTo&quot;: &quot;HyASBOR5Z&quot;,&#xd;
+                            &quot;options&quot;: [&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;YES&quot;,&#xd;
+                                &quot;actions&quot;: []&#xd;
+                              },&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;NO&quot;,&#xd;
+                                &quot;actions&quot;: []&#xd;
+                              },&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                                &quot;actions&quot;: []&#xd;
+                              }&#xd;
+                            ],&#xd;
+                            &quot;id&quot;: &quot;SJPcrdR9W&quot;,&#xd;
+                            &quot;dependOn&quot;: &quot;HyASBOR5Z&quot;&#xd;
+                          }&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;id&quot;: &quot;chk__279&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;NO&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__280&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__281&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;isCustomType&quot;: false,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;id&quot;: &quot;HyASBOR5Z&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Approved Samples&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;By-CSd05W&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Are there approved Color/Print/Artwork/shade band for the sample?&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;H1_JLdCc-&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Does the sample have Trims and Accessories?&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Approved Standards&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;PVP Verification&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                      &quot;label&quot;: &quot;Are all materials and components at the factory warehouse and procurement documentation match?&quot;,&#xd;
+                      &quot;dependTo&quot;: &quot;rkyfLOC9-&quot;,&#xd;
+                      &quot;addedByConditionValue&quot;: &quot;NO&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;failResponse&quot;: false,&#xd;
+                          &quot;value&quot;: &quot;YES&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk__1802&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;failResponse&quot;: false,&#xd;
+                          &quot;value&quot;: &quot;NO&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk__1803&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;failResponse&quot;: false,&#xd;
+                          &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk__1804&quot;&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;type&quot;: &quot;question&quot;,&#xd;
+                      &quot;id&quot;: &quot;SyecVtNhZ&quot;,&#xd;
+                      &quot;dependOn&quot;: &quot;rkyfLOC9-&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;YES&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__1799&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;,&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;actions&quot;: [&#xd;
+                        {&#xd;
+                          &quot;action&quot;: &quot;add_question&quot;,&#xd;
+                          &quot;question&quot;: {&#xd;
+                            &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                            &quot;option&quot;: &quot;YES&quot;,&#xd;
+                            &quot;choice&quot;: &quot;YES&quot;,&#xd;
+                            &quot;dependTo&quot;: &quot;rkyfLOC9-&quot;,&#xd;
+                            &quot;addedByConditionValue&quot;: &quot;NO&quot;,&#xd;
+                            &quot;options&quot;: [&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;YES&quot;,&#xd;
+                                &quot;failResponse&quot;: false,&#xd;
+                                &quot;actions&quot;: [],&#xd;
+                                &quot;id&quot;: &quot;chk__1802&quot;&#xd;
+                              },&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;NO&quot;,&#xd;
+                                &quot;failResponse&quot;: false,&#xd;
+                                &quot;actions&quot;: [],&#xd;
+                                &quot;id&quot;: &quot;chk__1803&quot;&#xd;
+                              },&#xd;
+                              {&#xd;
+                                &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                                &quot;failResponse&quot;: false,&#xd;
+                                &quot;actions&quot;: [],&#xd;
+                                &quot;id&quot;: &quot;chk__1804&quot;&#xd;
+                              }&#xd;
+                            ],&#xd;
+                            &quot;id&quot;: &quot;SyecVtNhZ&quot;,&#xd;
+                            &quot;dependOn&quot;: &quot;rkyfLOC9-&quot;&#xd;
+                          }&#xd;
+                        }&#xd;
+                      ],&#xd;
+                      &quot;id&quot;: &quot;chk__1800&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__1801&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Is production for all styles/PID?s observed on the floor?&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;id&quot;: &quot;rkyfLOC9-&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;Syh6EtVhW&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;YES&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__1805&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;NO&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__1806&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;failResponse&quot;: false,&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk__1807&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Are all production processes executed in-house or sub-facilities (i.e. Printing, washing)?&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Production Validation&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Inspection Preparation&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;BkjY8uRcZ&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Does product have any RFID?&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;RFID Check&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Carton Check&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;sampleSelection&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [],&#xd;
+          &quot;label&quot;: &quot;Sample Selection&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;packaging&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;dataName&quot;: &quot;packagingInspectionPlan&quot;,&#xd;
+              &quot;configuration&quot;: {&#xd;
+                &quot;packagingInspectionPlan&quot;: true&#xd;
+              },&#xd;
+              &quot;type&quot;: &quot;container&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;dataName&quot;: &quot;sampleSizeDetermination&quot;,&#xd;
+                  &quot;configuration&quot;: {&#xd;
+                    &quot;control&quot;: {&#xd;
+                      &quot;displayAttribute&quot;: &quot;name&quot;,&#xd;
+                      &quot;label&quot;: &quot;Sample Size Determination&quot;,&#xd;
+                      &quot;value&quot;: &quot;aqlTable&quot;,&#xd;
+                      &quot;valueAttribute&quot;: &quot;key&quot;,&#xd;
+                      &quot;type&quot;: &quot;select&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;50% quantity&quot;,&#xd;
+                          &quot;key&quot;: &quot;50&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;100% quantity&quot;,&#xd;
+                          &quot;key&quot;: &quot;100&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;By size per style&quot;,&#xd;
+                          &quot;key&quot;: &quot;size&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;By Color&quot;,&#xd;
+                          &quot;key&quot;: &quot;color&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;AQL Standard&quot;,&#xd;
+                          &quot;key&quot;: &quot;aqlTable&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;Determined Quantity&quot;,&#xd;
+                          &quot;key&quot;: &quot;determine&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;Inspector Decide&quot;,&#xd;
+                          &quot;key&quot;: &quot;inspectorDecide&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    },&#xd;
+                    &quot;extendValue&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                    &quot;template&quot;: {&#xd;
+                      &quot;color&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;value&quot;: &quot;red&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;perColor&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples per color&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      },&#xd;
+                      &quot;determine&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;value&quot;: &quot;1212&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;samples&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      },&#xd;
+                      &quot;aqlTable&quot;: {&#xd;
+                        &quot;displayDataName&quot;: &quot;aqlName&quot;,&#xd;
+                        &quot;load&quot;: {&#xd;
+                          &quot;api&quot;: {&#xd;
+                            &quot;dataSourceAttr&quot;: &quot;data&quot;,&#xd;
+                            &quot;resourceMapping&quot;: &quot;inspectorioApi.aql&quot;&#xd;
+                          },&#xd;
+                          &quot;from&quot;: &quot;api&quot;&#xd;
+                        },&#xd;
+                        &quot;initialValue&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                        &quot;type&quot;: &quot;select&quot;,&#xd;
+                        &quot;displayAttribute&quot;: &quot;aqlName&quot;,&#xd;
+                        &quot;label&quot;: &quot;AQL Table&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;aqlTable&quot;,&#xd;
+                        &quot;value&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                        &quot;valueAttribute&quot;: &quot;aqlId&quot;,&#xd;
+                        &quot;placeholder&quot;: &quot;Please select your choice&quot;&#xd;
+                      },&#xd;
+                      &quot;size&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;value&quot;: &quot;21323&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;perSize&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples per size&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      }&#xd;
+                    }&#xd;
+                  },&#xd;
+                  &quot;type&quot;: &quot;determination&quot;,&#xd;
+                  &quot;label&quot;: &quot;Sample Size Determination&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;displayDataName&quot;: &quot;defectCategoryName&quot;,&#xd;
+                  &quot;load&quot;: {&#xd;
+                    &quot;api&quot;: {&#xd;
+                      &quot;dataSourceAttr&quot;: &quot;data&quot;,&#xd;
+                      &quot;resourceMapping&quot;: &quot;inspectorioApi.dss.defects&quot;&#xd;
+                    },&#xd;
+                    &quot;from&quot;: &quot;api&quot;&#xd;
+                  },&#xd;
+                  &quot;initialValue&quot;: [&#xd;
+                    &quot;1201&quot;,&#xd;
+                    &quot;1202&quot;,&#xd;
+                    &quot;1203&quot;,&#xd;
+                    &quot;1204&quot;,&#xd;
+                    &quot;1205&quot;,&#xd;
+                    &quot;1206&quot;,&#xd;
+                    &quot;1207&quot;,&#xd;
+                    &quot;1208&quot;,&#xd;
+                    &quot;1209&quot;,&#xd;
+                    &quot;1210&quot;,&#xd;
+                    &quot;1211&quot;,&#xd;
+                    &quot;1212&quot;,&#xd;
+                    &quot;1213&quot;,&#xd;
+                    &quot;1214&quot;,&#xd;
+                    &quot;1292&quot;,&#xd;
+                    &quot;1293&quot;&#xd;
+                  ],&#xd;
+                  &quot;value&quot;: [&#xd;
+                    &quot;1201&quot;,&#xd;
+                    &quot;1202&quot;,&#xd;
+                    &quot;1203&quot;,&#xd;
+                    &quot;1204&quot;,&#xd;
+                    &quot;1205&quot;,&#xd;
+                    &quot;1206&quot;,&#xd;
+                    &quot;1207&quot;,&#xd;
+                    &quot;1208&quot;,&#xd;
+                    &quot;1209&quot;,&#xd;
+                    &quot;1210&quot;,&#xd;
+                    &quot;1211&quot;,&#xd;
+                    &quot;1212&quot;,&#xd;
+                    &quot;1213&quot;,&#xd;
+                    &quot;1214&quot;,&#xd;
+                    &quot;1292&quot;,&#xd;
+                    &quot;1293&quot;&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Defects&quot;,&#xd;
+                  &quot;dataName&quot;: &quot;defects&quot;,&#xd;
+                  &quot;displayAttribute&quot;: &quot;info.defectCategoryName&quot;,&#xd;
+                  &quot;valueAttribute&quot;: &quot;defectCategoryId&quot;,&#xd;
+                  &quot;type&quot;: &quot;multiselect&quot;&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;label&quot;: &quot;Packaging Inspection Plan&quot;&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Packaging&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;workmanship&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;dataName&quot;: &quot;workmanshipInspectionPlan&quot;,&#xd;
+              &quot;configuration&quot;: {&#xd;
+                &quot;packagingInspectionPlan&quot;: true&#xd;
+              },&#xd;
+              &quot;type&quot;: &quot;container&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;dataName&quot;: &quot;sampleSizeDetermination&quot;,&#xd;
+                  &quot;configuration&quot;: {&#xd;
+                    &quot;control&quot;: {&#xd;
+                      &quot;displayAttribute&quot;: &quot;name&quot;,&#xd;
+                      &quot;label&quot;: &quot;Sample Size Determination&quot;,&#xd;
+                      &quot;value&quot;: &quot;aqlTable&quot;,&#xd;
+                      &quot;valueAttribute&quot;: &quot;key&quot;,&#xd;
+                      &quot;type&quot;: &quot;select&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;50% quantity&quot;,&#xd;
+                          &quot;key&quot;: &quot;50&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;100% quantity&quot;,&#xd;
+                          &quot;key&quot;: &quot;100&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;By size&quot;,&#xd;
+                          &quot;key&quot;: &quot;size&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;By Color&quot;,&#xd;
+                          &quot;key&quot;: &quot;color&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;AQL Standard&quot;,&#xd;
+                          &quot;key&quot;: &quot;aqlTable&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;Determined Quantity&quot;,&#xd;
+                          &quot;key&quot;: &quot;determine&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;Inspector Decide&quot;,&#xd;
+                          &quot;key&quot;: &quot;inspectorDecide&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    },&#xd;
+                    &quot;extendValue&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                    &quot;template&quot;: {&#xd;
+                      &quot;color&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;value&quot;: &quot;red&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;perColor&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples per color&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      },&#xd;
+                      &quot;determine&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;value&quot;: &quot;1212&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;samples&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      },&#xd;
+                      &quot;aqlTable&quot;: {&#xd;
+                        &quot;displayDataName&quot;: &quot;aqlName&quot;,&#xd;
+                        &quot;load&quot;: {&#xd;
+                          &quot;api&quot;: {&#xd;
+                            &quot;dataSourceAttr&quot;: &quot;data&quot;,&#xd;
+                            &quot;resourceMapping&quot;: &quot;inspectorioApi.aql&quot;&#xd;
+                          },&#xd;
+                          &quot;from&quot;: &quot;api&quot;&#xd;
+                        },&#xd;
+                        &quot;initialValue&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                        &quot;type&quot;: &quot;select&quot;,&#xd;
+                        &quot;displayAttribute&quot;: &quot;aqlName&quot;,&#xd;
+                        &quot;label&quot;: &quot;AQL Table&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;aqlTable&quot;,&#xd;
+                        &quot;value&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                        &quot;valueAttribute&quot;: &quot;aqlId&quot;,&#xd;
+                        &quot;placeholder&quot;: &quot;Please select your choice&quot;&#xd;
+                      },&#xd;
+                      &quot;size&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;value&quot;: &quot;21323&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;perSize&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples per size&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      }&#xd;
+                    }&#xd;
+                  },&#xd;
+                  &quot;type&quot;: &quot;determination&quot;,&#xd;
+                  &quot;label&quot;: &quot;Sample Size Determination&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;displayDataName&quot;: &quot;defectCategoryName&quot;,&#xd;
+                  &quot;load&quot;: {&#xd;
+                    &quot;api&quot;: {&#xd;
+                      &quot;dataSourceAttr&quot;: &quot;data&quot;,&#xd;
+                      &quot;resourceMapping&quot;: &quot;inspectorioApi.dss.defects&quot;&#xd;
+                    },&#xd;
+                    &quot;from&quot;: &quot;api&quot;&#xd;
+                  },&#xd;
+                  &quot;initialValue&quot;: [&#xd;
+                    &quot;1201&quot;,&#xd;
+                    &quot;1202&quot;,&#xd;
+                    &quot;1203&quot;,&#xd;
+                    &quot;1204&quot;,&#xd;
+                    &quot;1205&quot;,&#xd;
+                    &quot;1206&quot;,&#xd;
+                    &quot;1207&quot;,&#xd;
+                    &quot;1208&quot;,&#xd;
+                    &quot;1209&quot;,&#xd;
+                    &quot;1210&quot;,&#xd;
+                    &quot;1211&quot;,&#xd;
+                    &quot;1212&quot;,&#xd;
+                    &quot;1213&quot;,&#xd;
+                    &quot;1214&quot;,&#xd;
+                    &quot;1292&quot;,&#xd;
+                    &quot;1293&quot;&#xd;
+                  ],&#xd;
+                  &quot;value&quot;: [&#xd;
+                    &quot;1201&quot;,&#xd;
+                    &quot;1202&quot;,&#xd;
+                    &quot;1203&quot;,&#xd;
+                    &quot;1204&quot;,&#xd;
+                    &quot;1205&quot;,&#xd;
+                    &quot;1206&quot;,&#xd;
+                    &quot;1207&quot;,&#xd;
+                    &quot;1208&quot;,&#xd;
+                    &quot;1209&quot;,&#xd;
+                    &quot;1210&quot;,&#xd;
+                    &quot;1211&quot;,&#xd;
+                    &quot;1212&quot;,&#xd;
+                    &quot;1213&quot;,&#xd;
+                    &quot;1214&quot;,&#xd;
+                    &quot;1292&quot;,&#xd;
+                    &quot;1293&quot;&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Defects&quot;,&#xd;
+                  &quot;dataName&quot;: &quot;defects&quot;,&#xd;
+                  &quot;displayAttribute&quot;: &quot;info.defectCategoryName&quot;,&#xd;
+                  &quot;valueAttribute&quot;: &quot;defectCategoryId&quot;,&#xd;
+                  &quot;type&quot;: &quot;multiselect&quot;&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;label&quot;: &quot;Workmanship Inspection Plan&quot;&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Workmanship&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Packaging - Workmanship&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;measurements&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;header&quot;: {&#xd;
+                &quot;labelCol&quot;: &quot;Description&quot;&#xd;
+              },&#xd;
+              &quot;hideCheckingListAddItem&quot;: false,&#xd;
+              &quot;type&quot;: &quot;checking_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;caption&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;label&quot;: &quot;Caption&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;measurementChart&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;label&quot;: &quot;Measurement Chart&quot;&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;dataName&quot;: &quot;checkingList&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;dataName&quot;: &quot;measurementPlan&quot;,&#xd;
+              &quot;configuration&quot;: {&#xd;
+                &quot;packagingInspectionPlan&quot;: true&#xd;
+              },&#xd;
+              &quot;type&quot;: &quot;container&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;dataName&quot;: &quot;sampleSizeDetermination&quot;,&#xd;
+                  &quot;configuration&quot;: {&#xd;
+                    &quot;control&quot;: {&#xd;
+                      &quot;displayAttribute&quot;: &quot;name&quot;,&#xd;
+                      &quot;label&quot;: &quot;Sample Size Determination&quot;,&#xd;
+                      &quot;value&quot;: &quot;aqlTable&quot;,&#xd;
+                      &quot;valueAttribute&quot;: &quot;key&quot;,&#xd;
+                      &quot;type&quot;: &quot;select&quot;,&#xd;
+                      &quot;options&quot;: [&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;By Item&quot;,&#xd;
+                          &quot;key&quot;: &quot;byItem&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;By Size Per Style&quot;,&#xd;
+                          &quot;key&quot;: &quot;size&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;By Color Per Style&quot;,&#xd;
+                          &quot;key&quot;: &quot;color&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;AQL Standard&quot;,&#xd;
+                          &quot;key&quot;: &quot;aqlTable&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;Determined Quantity&quot;,&#xd;
+                          &quot;key&quot;: &quot;determine&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;name&quot;: &quot;Inspector Decide&quot;,&#xd;
+                          &quot;key&quot;: &quot;inspectorDecide&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    },&#xd;
+                    &quot;extendValue&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                    &quot;template&quot;: {&#xd;
+                      &quot;color&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;perColor&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples Per Style&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      },&#xd;
+                      &quot;byItem&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;perItem&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples Per Style&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      },&#xd;
+                      &quot;determine&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;samples&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      },&#xd;
+                      &quot;aqlTable&quot;: {&#xd;
+                        &quot;displayDataName&quot;: &quot;aqlName&quot;,&#xd;
+                        &quot;load&quot;: {&#xd;
+                          &quot;api&quot;: {&#xd;
+                            &quot;dataSourceAttr&quot;: &quot;data&quot;,&#xd;
+                            &quot;resourceMapping&quot;: &quot;inspectorioApi.aql&quot;&#xd;
+                          },&#xd;
+                          &quot;from&quot;: &quot;api&quot;&#xd;
+                        },&#xd;
+                        &quot;initialValue&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                        &quot;type&quot;: &quot;select&quot;,&#xd;
+                        &quot;displayAttribute&quot;: &quot;aqlName&quot;,&#xd;
+                        &quot;label&quot;: &quot;AQL Table&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;aqlTable&quot;,&#xd;
+                        &quot;value&quot;: &quot;0c5734a4-6b6f-11e7-92a1-0242ac11000c&quot;,&#xd;
+                        &quot;valueAttribute&quot;: &quot;aqlId&quot;,&#xd;
+                        &quot;placeholder&quot;: &quot;Please select your choice&quot;&#xd;
+                      },&#xd;
+                      &quot;size&quot;: {&#xd;
+                        &quot;category&quot;: &quot;input&quot;,&#xd;
+                        &quot;dataName&quot;: &quot;perSize&quot;,&#xd;
+                        &quot;prefixText&quot;: &quot;with&quot;,&#xd;
+                        &quot;suffixText&quot;: &quot;samples Per Style&quot;,&#xd;
+                        &quot;type&quot;: &quot;text&quot;&#xd;
+                      }&#xd;
+                    }&#xd;
+                  },&#xd;
+                  &quot;type&quot;: &quot;determination&quot;,&#xd;
+                  &quot;label&quot;: &quot;Sample Size Determination&quot;&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;label&quot;: &quot;Measurement Inspection Plan&quot;&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Measurements&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Measurement&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;H1Dg5Qf2b&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Do we need to pull a Black sealed sample?&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;Additional Verification&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Additional Verification&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;step&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;dataName&quot;: &quot;questionGroup&quot;,&#xd;
+          &quot;type&quot;: &quot;group&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;type&quot;: &quot;question_list&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;HkWhPuC5Z&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Did you identify any issues that will affect delivery, cost, liability, quality, safety, or design? Include details for each issue?&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;rJJ0PO0q-&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;During the inspection and production validation walkthrough, did the factory demonstrate full execution of the manufacturing control plan?&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;ByF1u_09W&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Which criteria meets based on your observations?&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;HkOlOO05-&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Did the facility provide appropriate site conditions to perform Inspection Activities (sufficient lighting, Inspection Tables, Ventilation)?&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;questionType&quot;: &quot;yes_no&quot;,&#xd;
+                  &quot;id&quot;: &quot;rym-OOA9-&quot;,&#xd;
+                  &quot;type&quot;: &quot;question&quot;,&#xd;
+                  &quot;options&quot;: [&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;YES&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;NO&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;value&quot;: &quot;N/A&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;During the inspection did you experience any kind of influence from factory/agent or vendor trying to alter the result of the inspection?&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            }&#xd;
+          ],&#xd;
+          &quot;label&quot;: &quot;On-Site Verification&quot;&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;On-Site Verification&quot;&#xd;
+    }&#xd;
+  ],&#xd;
+  &quot;summaryResult&quot;: [],&#xd;
+  &quot;organizationId&quot;: &quot;1254&quot;,&#xd;
+  &quot;generalInformationTemplate&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;group&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;active&quot;: true,&#xd;
+          &quot;dataName&quot;: &quot;unitType&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;active&quot;: true,&#xd;
+          &quot;dataName&quot;: &quot;reportName&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;active&quot;: true,&#xd;
+          &quot;dataName&quot;: &quot;bookingInformation&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;detailOfPIPO&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;pipoInformation&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;piNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;poNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;productLine&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;countryOfShipment&quot;&#xd;
+                    }&#xd;
+                  ]&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;styles&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;styleName&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;productCategory&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;productDescription&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;solidDetail&quot;,&#xd;
+                      &quot;children&quot;: [&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;id&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;color&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;size&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;availableQuantity&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;orderQuantity&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;ratio&quot;,&#xd;
+                      &quot;children&quot;: [&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;color&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;size&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;availableQuantity&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;orderQuantity&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;assortmentDetail&quot;,&#xd;
+                      &quot;children&quot;: [&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;assortmentId&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;availableCartonQuantity&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;orderCartonQuantity&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;quantity&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;f_assortmentConfiguration&quot;,&#xd;
+                          &quot;children&quot;: [&#xd;
+                            {&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;id&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;color&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;size&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;size&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;configurationQuantity&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;availableQuantity&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;orderQuantity&quot;&#xd;
+                            }&#xd;
+                          ]&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    }&#xd;
+                  ]&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;expectedDate&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;shipmentDate&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;inspectionDate&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;brandRetailerInformation&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;name&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;mainContact&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;name&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;mobileNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;telephoneNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;email&quot;&#xd;
+                    }&#xd;
+                  ]&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;supplierVendorInformation&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;name&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;mainContact&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;name&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;mobileNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;telephoneNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;email&quot;&#xd;
+                    }&#xd;
+                  ]&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;factoryInformation&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;name&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;mainContact&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;name&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;mobileNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;telephoneNumber&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;email&quot;&#xd;
+                    }&#xd;
+                  ]&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;typeOfInspection&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;inspectionLocationInformation&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;factoryName&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;contactPerson&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;telephoneNumber&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;gpsLocation&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;packingListDocument&quot;&#xd;
+            }&#xd;
+          ]&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Inspection Information&quot;&#xd;
+    }&#xd;
+  ],&#xd;
+  &quot;assignmentCount&quot;: 0,&#xd;
+  &quot;generalInformation&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;group&quot;,&#xd;
+      &quot;children&quot;: [&#xd;
+        {&#xd;
+          &quot;active&quot;: true,&#xd;
+          &quot;dataName&quot;: &quot;unitType&quot;,&#xd;
+          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+          &quot;group&quot;: &quot;common&quot;,&#xd;
+          &quot;label&quot;: &quot;Unit type&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;active&quot;: true,&#xd;
+          &quot;dataName&quot;: &quot;reportName&quot;,&#xd;
+          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+          &quot;group&quot;: &quot;common&quot;,&#xd;
+          &quot;label&quot;: &quot;Report name&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;group&quot;: &quot;common&quot;,&#xd;
+          &quot;label&quot;: &quot;Booking Information&quot;,&#xd;
+          &quot;dataName&quot;: &quot;bookingInformation&quot;,&#xd;
+          &quot;active&quot;: true,&#xd;
+          &quot;type&quot;: &quot;checking_list&quot;,&#xd;
+          &quot;children&quot;: [&#xd;
+            {&#xd;
+              &quot;label&quot;: &quot;Detail of PI/PO&quot;,&#xd;
+              &quot;disabled&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;detailOfPIPO&quot;,&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;PI Number&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;piNumber&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_136&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;PO Number&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;poNumber&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_137&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Product Line (Department)&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;productLine&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_138&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Country of Shipment&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;countryOfShipment&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_139&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Purchase Invoice (PI) Information&quot;,&#xd;
+                  &quot;disabled&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;pipoInformation&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_135&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Name&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;styleName&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_168&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Product Category&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;productCategory&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_169&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;productDescription&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_170&quot;,&#xd;
+                      &quot;label&quot;: &quot;Description&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;id&quot;: &quot;chk_176&quot;,&#xd;
+                      &quot;dataName&quot;: &quot;solidDetail&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;label&quot;: &quot;Solid Detail&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;children&quot;: [&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Item ID&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;id&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_177&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Color&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;color&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_178&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Size&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;size&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_179&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Available Quantity&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;availableQuantity&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_180&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Order Quantity&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;orderQuantity&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_181&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;id&quot;: &quot;chk_186&quot;,&#xd;
+                      &quot;dataName&quot;: &quot;ratio&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;label&quot;: &quot;Ratio&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;children&quot;: [&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Color&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;color&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_187&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Size&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;size&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_188&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Available Quantity&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;availableQuantity&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_189&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Order Quantity&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;orderQuantity&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_190&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;id&quot;: &quot;chk_203&quot;,&#xd;
+                      &quot;dataName&quot;: &quot;assortmentDetail&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;label&quot;: &quot;Assortment Detail&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;children&quot;: [&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Assortment ID&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;assortmentId&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_204&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Available Carton Quantity&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;availableCartonQuantity&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_205&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Order Carton Quantity&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;orderCartonQuantity&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_206&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;label&quot;: &quot;Quantity&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;quantity&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_207&quot;&#xd;
+                        },&#xd;
+                        {&#xd;
+                          &quot;children&quot;: [&#xd;
+                            {&#xd;
+                              &quot;label&quot;: &quot;Item ID&quot;,&#xd;
+                              &quot;disabled&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;id&quot;,&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                              &quot;id&quot;: &quot;chk_216&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;label&quot;: &quot;Color&quot;,&#xd;
+                              &quot;disabled&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;color&quot;,&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                              &quot;id&quot;: &quot;chk_217&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;label&quot;: &quot;Size&quot;,&#xd;
+                              &quot;disabled&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;size&quot;,&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                              &quot;id&quot;: &quot;chk_218&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;label&quot;: &quot;Size&quot;,&#xd;
+                              &quot;disabled&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;size&quot;,&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                              &quot;id&quot;: &quot;chk_219&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;label&quot;: &quot;Configuration&quot;,&#xd;
+                              &quot;disabled&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;configurationQuantity&quot;,&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                              &quot;id&quot;: &quot;chk_220&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;label&quot;: &quot;Available Quantity&quot;,&#xd;
+                              &quot;disabled&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;availableQuantity&quot;,&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                              &quot;id&quot;: &quot;chk_221&quot;&#xd;
+                            },&#xd;
+                            {&#xd;
+                              &quot;label&quot;: &quot;Order Quantity&quot;,&#xd;
+                              &quot;disabled&quot;: true,&#xd;
+                              &quot;dataName&quot;: &quot;orderQuantity&quot;,&#xd;
+                              &quot;active&quot;: true,&#xd;
+                              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                              &quot;id&quot;: &quot;chk_222&quot;&#xd;
+                            }&#xd;
+                          ],&#xd;
+                          &quot;label&quot;: &quot;Assortment Configuration&quot;,&#xd;
+                          &quot;disabled&quot;: true,&#xd;
+                          &quot;dataName&quot;: &quot;f_assortmentConfiguration&quot;,&#xd;
+                          &quot;active&quot;: true,&#xd;
+                          &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                          &quot;id&quot;: &quot;chk_215&quot;&#xd;
+                        }&#xd;
+                      ]&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Styles&quot;,&#xd;
+                  &quot;disabled&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;styles&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_167&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;label&quot;: &quot;Expected Date&quot;,&#xd;
+              &quot;disabled&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;expectedDate&quot;,&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;label&quot;: &quot;Shipment Date&quot;,&#xd;
+                  &quot;disabled&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;shipmentDate&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_226&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;label&quot;: &quot;InspectionDate&quot;,&#xd;
+                  &quot;disabled&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;inspectionDate&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_227&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;brandRetailerInformation&quot;,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;name&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_236&quot;,&#xd;
+                  &quot;label&quot;: &quot;Name&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_237&quot;,&#xd;
+                  &quot;label&quot;: &quot;Address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;id&quot;: &quot;chk_242&quot;,&#xd;
+                  &quot;dataName&quot;: &quot;mainContact&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;label&quot;: &quot;Main Contact At Brand/Retailer&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;name&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_243&quot;,&#xd;
+                      &quot;label&quot;: &quot;Contact Person&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;mobileNumber&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_244&quot;,&#xd;
+                      &quot;label&quot;: &quot;Mobile Number&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;telephoneNumber&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_245&quot;,&#xd;
+                      &quot;label&quot;: &quot;Telephone Number&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;email&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_246&quot;,&#xd;
+                      &quot;label&quot;: &quot;Email&quot;&#xd;
+                    }&#xd;
+                  ]&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;label&quot;: &quot;Brand/Retailer Information&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;supplierVendorInformation&quot;,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;name&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_255&quot;,&#xd;
+                  &quot;label&quot;: &quot;Name&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_256&quot;,&#xd;
+                  &quot;label&quot;: &quot;Address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;id&quot;: &quot;chk_261&quot;,&#xd;
+                  &quot;dataName&quot;: &quot;mainContact&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;label&quot;: &quot;Main Contact At Suppplier&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;name&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_262&quot;,&#xd;
+                      &quot;label&quot;: &quot;Contact Person&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;mobileNumber&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_263&quot;,&#xd;
+                      &quot;label&quot;: &quot;Mobile Number&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;telephoneNumber&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_264&quot;,&#xd;
+                      &quot;label&quot;: &quot;Telephone Number&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;email&quot;,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_265&quot;,&#xd;
+                      &quot;label&quot;: &quot;Email&quot;&#xd;
+                    }&#xd;
+                  ]&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;label&quot;: &quot;Supplier/Vendor Information&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;label&quot;: &quot;Factory Information&quot;,&#xd;
+              &quot;disabled&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;factoryInformation&quot;,&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;label&quot;: &quot;Name&quot;,&#xd;
+                  &quot;disabled&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;name&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_274&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;label&quot;: &quot;Address&quot;,&#xd;
+                  &quot;disabled&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_275&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;children&quot;: [&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Contact Person&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;name&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_281&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Mobile Number&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;mobileNumber&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_282&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Telephone Number&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;telephoneNumber&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_283&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                      &quot;label&quot;: &quot;Email&quot;,&#xd;
+                      &quot;disabled&quot;: true,&#xd;
+                      &quot;dataName&quot;: &quot;email&quot;,&#xd;
+                      &quot;active&quot;: true,&#xd;
+                      &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                      &quot;id&quot;: &quot;chk_284&quot;&#xd;
+                    }&#xd;
+                  ],&#xd;
+                  &quot;label&quot;: &quot;Main Contact At Factory&quot;,&#xd;
+                  &quot;disabled&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;mainContact&quot;,&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_280&quot;&#xd;
+                }&#xd;
+              ]&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;disabled&quot;: true,&#xd;
+              &quot;label&quot;: &quot;Type Of Inpsection&quot;,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;dataName&quot;: &quot;typeOfInspection&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;inspectionLocationInformation&quot;,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;children&quot;: [&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;factoryName&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_291&quot;,&#xd;
+                  &quot;label&quot;: &quot;factoryName&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;address&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_292&quot;,&#xd;
+                  &quot;label&quot;: &quot;Address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;contactPerson&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_293&quot;,&#xd;
+                  &quot;label&quot;: &quot;Contact Person&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                  &quot;active&quot;: true,&#xd;
+                  &quot;dataName&quot;: &quot;telephoneNumber&quot;,&#xd;
+                  &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+                  &quot;id&quot;: &quot;chk_294&quot;,&#xd;
+                  &quot;label&quot;: &quot;Telephone Number&quot;&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;label&quot;: &quot;Inspection Location Information&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;gpsLocation&quot;,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;label&quot;: &quot;GPS Location&quot;&#xd;
+            },&#xd;
+            {&#xd;
+              &quot;active&quot;: true,&#xd;
+              &quot;dataName&quot;: &quot;packingListDocument&quot;,&#xd;
+              &quot;type&quot;: &quot;checking_option&quot;,&#xd;
+              &quot;label&quot;: &quot;Packing List Document&quot;&#xd;
+            }&#xd;
+          ]&#xd;
+        }&#xd;
+      ],&#xd;
+      &quot;label&quot;: &quot;Inspection Information&quot;&#xd;
+    }&#xd;
+  ],&#xd;
+  &quot;productLines&quot;: [&#xd;
+    &quot;25142&quot;,&#xd;
+    &quot;25143&quot;,&#xd;
+    &quot;25145&quot;,&#xd;
+    &quot;25149&quot;,&#xd;
+    &quot;25150&quot;,&#xd;
+    &quot;25151&quot;,&#xd;
+    &quot;25152&quot;,&#xd;
+    &quot;25153&quot;,&#xd;
+    &quot;25154&quot;&#xd;
+  ],&#xd;
+  &quot;inspectionType&quot;: &quot;dupro&quot;,&#xd;
+  &quot;workflowId&quot;: &quot;${WORKFLOW_ID}&quot;,&#xd;
+  &quot;workflowName&quot;: &quot;${WORKFLOW_NAME}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/inspectorio/ams/v1/1254/workflows/import</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="AQL API Steps" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get all AQL tables" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/aql/v1/${ORG_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add AQL Table Workmanship" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;aqlName&quot;: &quot;Workmanship_Target&quot;,&#xd;
+  &quot;criticalStandard&quot;: &quot;0.010&quot;,&#xd;
+  &quot;majorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;minorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;quantitativeObject&quot;: &quot;available_quantity&quot;,&#xd;
+  &quot;rules&quot;: []&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/aql/v1/${ORG_ID_1}</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">quantative Object: order_quantity, available_quantity, unique item</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="extract aql ID" enabled="true">
+              <stringProp name="VAR">AQL_ID</stringProp>
+              <stringProp name="JSONPATH">$.data.aqlId</stringProp>
+              <stringProp name="DEFAULT">NOT_FOUND</stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add AQL into table Workmanship" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;aqlId&quot;: &quot;${AQL_ID}&quot;,&#xd;
+  &quot;aqlName&quot;: &quot;Workmanship_Target&quot;,&#xd;
+  &quot;criticalStandard&quot;: &quot;0.01&quot;,&#xd;
+  &quot;majorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;minorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;quantitativeObject&quot;: &quot;order_quantity&quot;,&#xd;
+  &quot;organizationId&quot;: &quot;${ORG_ID}&quot;,&#xd;
+  &quot;rules&quot;: [&#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 0, &#xd;
+          &quot;acceptedMinor&quot;: 0, &#xd;
+          &quot;orderQuantityFrom&quot;: 1, &#xd;
+          &quot;orderQuantityTo&quot;: 50, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 1, &#xd;
+          &quot;rejectedMinor&quot;: 1, &#xd;
+          &quot;sampleSize&quot;: 8&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 1, &#xd;
+          &quot;acceptedMinor&quot;: 1, &#xd;
+          &quot;orderQuantityFrom&quot;: 51, &#xd;
+          &quot;orderQuantityTo&quot;: 150, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 2, &#xd;
+          &quot;rejectedMinor&quot;: 2, &#xd;
+          &quot;sampleSize&quot;: 13&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 1, &#xd;
+          &quot;acceptedMinor&quot;: 1, &#xd;
+          &quot;orderQuantityFrom&quot;: 151, &#xd;
+          &quot;orderQuantityTo&quot;: 500, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 2, &#xd;
+          &quot;rejectedMinor&quot;: 2, &#xd;
+          &quot;sampleSize&quot;: 20&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 2, &#xd;
+          &quot;acceptedMinor&quot;: 2, &#xd;
+          &quot;orderQuantityFrom&quot;: 501, &#xd;
+          &quot;orderQuantityTo&quot;: 1200, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 3, &#xd;
+          &quot;rejectedMinor&quot;: 3, &#xd;
+          &quot;sampleSize&quot;: 32&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 3, &#xd;
+          &quot;acceptedMinor&quot;: 3, &#xd;
+          &quot;orderQuantityFrom&quot;: 1201, &#xd;
+          &quot;orderQuantityTo&quot;: 3200, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 4, &#xd;
+          &quot;rejectedMinor&quot;: 4, &#xd;
+          &quot;sampleSize&quot;: 50&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 4, &#xd;
+          &quot;acceptedMinor&quot;: 4, &#xd;
+          &quot;orderQuantityFrom&quot;: 3201, &#xd;
+          &quot;orderQuantityTo&quot;: 10000, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 5, &#xd;
+          &quot;rejectedMinor&quot;: 5, &#xd;
+          &quot;sampleSize&quot;: 80&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 6, &#xd;
+          &quot;acceptedMinor&quot;: 6, &#xd;
+          &quot;orderQuantityFrom&quot;: 10001, &#xd;
+          &quot;orderQuantityTo&quot;: 999999, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 7, &#xd;
+          &quot;rejectedMinor&quot;: 7, &#xd;
+          &quot;sampleSize&quot;: 125&#xd;
+        }&#xd;
+      ]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/aql/v1/${ORG_ID_1}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add AQL Table Packaging" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;aqlName&quot;: &quot;Packaging_Target&quot;,&#xd;
+  &quot;criticalStandard&quot;: &quot;0.010&quot;,&#xd;
+  &quot;majorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;minorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;quantitativeObject&quot;: &quot;available_quantity&quot;,&#xd;
+  &quot;rules&quot;: []&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/aql/v1/${ORG_ID_1}</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">quantative Object: order_quantity, available_quantity, unique item</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="extract aql ID" enabled="true">
+              <stringProp name="VAR">AQL_ID</stringProp>
+              <stringProp name="JSONPATH">$.data.aqlId</stringProp>
+              <stringProp name="DEFAULT">NOT_FOUND</stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add AQL into table Packaging" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;aqlId&quot;: &quot;${AQL_ID}&quot;,&#xd;
+  &quot;aqlName&quot;: &quot;Packaging_Target&quot;,&#xd;
+  &quot;criticalStandard&quot;: &quot;0.01&quot;,&#xd;
+  &quot;majorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;minorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;quantitativeObject&quot;: &quot;order_quantity&quot;,&#xd;
+  &quot;organizationId&quot;: &quot;${ORG_ID}&quot;,&#xd;
+  &quot;rules&quot;: [&#xd;
+    {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 2, &#xd;
+          &quot;acceptedMinor&quot;: 2, &#xd;
+          &quot;orderQuantityFrom&quot;: 1, &#xd;
+          &quot;orderQuantityTo&quot;: 1200, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 3, &#xd;
+          &quot;rejectedMinor&quot;: 3, &#xd;
+          &quot;sampleSize&quot;: 32&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 0, &#xd;
+          &quot;acceptedMajor&quot;: 3, &#xd;
+          &quot;acceptedMinor&quot;: 3, &#xd;
+          &quot;orderQuantityFrom&quot;: 1200, &#xd;
+          &quot;orderQuantityTo&quot;: 999999, &#xd;
+          &quot;rejectedCritical&quot;: 1, &#xd;
+          &quot;rejectedMajor&quot;: 4, &#xd;
+          &quot;rejectedMinor&quot;: 4, &#xd;
+          &quot;sampleSize&quot;: 50&#xd;
+        }&#xd;
+  ]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/aql/v1/${ORG_ID_1}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add AQL Table for Measurement" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;aqlName&quot;: &quot;Measurement_Target&quot;,&#xd;
+  &quot;criticalStandard&quot;: &quot;0.010&quot;,&#xd;
+  &quot;majorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;minorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;quantitativeObject&quot;: &quot;NoI&quot;,&#xd;
+  &quot;rules&quot;: []&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/aql/v1/${ORG_ID_1}</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="extract aql ID" enabled="true">
+              <stringProp name="VAR">AQL_ID</stringProp>
+              <stringProp name="JSONPATH">$.data.aqlId</stringProp>
+              <stringProp name="DEFAULT">NOT_FOUND</stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add AQL into table Measurement" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;aqlName&quot;: &quot;Measurement_Target&quot;,&#xd;
+  &quot;criticalStandard&quot;: &quot;0.010&quot;,&#xd;
+  &quot;majorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;minorStandard&quot;: &quot;2.5&quot;,&#xd;
+  &quot;quantitativeObject&quot;: &quot;NoI&quot;,&#xd;
+  &quot;aqlId&quot;: &quot;${AQL_ID}&quot;,&#xd;
+  &quot;rules&quot;: [&#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 3, &#xd;
+          &quot;acceptedMajor&quot;: 3, &#xd;
+          &quot;acceptedMinor&quot;: 3, &#xd;
+          &quot;orderQuantityFrom&quot;: 1, &#xd;
+          &quot;orderQuantityTo&quot;: 20, &#xd;
+          &quot;rejectedCritical&quot;: 4, &#xd;
+          &quot;rejectedMajor&quot;: 4, &#xd;
+          &quot;rejectedMinor&quot;: 4, &#xd;
+          &quot;sampleSize&quot;: 20&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 5, &#xd;
+          &quot;acceptedMajor&quot;: 5, &#xd;
+          &quot;acceptedMinor&quot;: 5, &#xd;
+          &quot;orderQuantityFrom&quot;: 21, &#xd;
+          &quot;orderQuantityTo&quot;: 32, &#xd;
+          &quot;rejectedCritical&quot;: 6, &#xd;
+          &quot;rejectedMajor&quot;: 6, &#xd;
+          &quot;rejectedMinor&quot;: 6, &#xd;
+          &quot;sampleSize&quot;: 32&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 7, &#xd;
+          &quot;acceptedMajor&quot;: 7, &#xd;
+          &quot;acceptedMinor&quot;: 7, &#xd;
+          &quot;orderQuantityFrom&quot;: 33, &#xd;
+          &quot;orderQuantityTo&quot;: 50, &#xd;
+          &quot;rejectedCritical&quot;: 8, &#xd;
+          &quot;rejectedMajor&quot;: 8, &#xd;
+          &quot;rejectedMinor&quot;: 8, &#xd;
+          &quot;sampleSize&quot;: 50&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 8, &#xd;
+          &quot;acceptedMajor&quot;: 8, &#xd;
+          &quot;acceptedMinor&quot;: 8, &#xd;
+          &quot;orderQuantityFrom&quot;: 51, &#xd;
+          &quot;orderQuantityTo&quot;: 65, &#xd;
+          &quot;rejectedCritical&quot;: 9, &#xd;
+          &quot;rejectedMajor&quot;: 9, &#xd;
+          &quot;rejectedMinor&quot;: 9, &#xd;
+          &quot;sampleSize&quot;: 65&#xd;
+        }, &#xd;
+        {&#xd;
+          &quot;acceptedCritical&quot;: 10, &#xd;
+          &quot;acceptedMajor&quot;: 10, &#xd;
+          &quot;acceptedMinor&quot;: 10, &#xd;
+          &quot;orderQuantityFrom&quot;: 66, &#xd;
+          &quot;orderQuantityTo&quot;: 80, &#xd;
+          &quot;rejectedCritical&quot;: 11, &#xd;
+          &quot;rejectedMajor&quot;: 11, &#xd;
+          &quot;rejectedMinor&quot;: 11, &#xd;
+          &quot;sampleSize&quot;: 80&#xd;
+        }&#xd;
+      ]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${STAGING_URL}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/inspectorio/aql/v1/${ORG_ID_1}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script"></stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree>
+      <ConfigTestElement guiclass="PropertyControlGui" testclass="ConfigTestElement" testname="Property Display" enabled="true"/>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
